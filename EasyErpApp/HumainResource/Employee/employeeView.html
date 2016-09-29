@@ -1,0 +1,147 @@
+<div id="wrapper">
+
+        <!-- Navigation -->
+            
+        <header></header>
+        <!-- /.navbar-top-links -->
+        
+               
+        <!-- /.navbar-static-side -->
+
+    <div id="page-wrapper" style="min-height: 561px;">
+        <div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">employee</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-clock-o fa-fw"></i> List of employees
+                        </div>
+                        <div class="panel-body">
+                            <div class="dataTable_wrapper">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-employees">
+                                    <thead>
+                                        <tr>
+                                            <th>Cin</th>
+                                            <th>Email</th>
+                                            <th>Registration Number</th>
+                                            <th>Position</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="odd gradeX" ng-repeat="employee in employees | filter:searchText.fName">
+                                            <td>{{ employee.cin }}</td>
+                                            <td>{{ employee.email }}</td>
+                                            <td>{{ employee.registrationNbr }}</td>
+                                            <td>{{ employee.position }}</td>
+                                            <td>
+                                                <button ng-show="employee != null" class="btn btn-info" data-toggle="modal" data-target="#myModal" ng-click="detail(employee)">Detail</button>
+												<button class="btn btn-danger"  data-toggle="modal" data-target="#myModal2">
+                               Report
+                            </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-8 -->
+
+                <!-- /.col-lg-4 -->
+            </div>
+            <!-- /.row -->
+        </div>
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Detail : {{ detailemployee.fName }} {{ detailemployee.lName }}</h4>
+                </div>
+                <div class="modal-body">
+                   <div id="content">	 
+                        <h4>Registration Number : </h4>{{ detailemployee.registrationNbr }}                       
+                        <h4>Cin :</h4>{{ detailemployee.cin }}
+                        <h4>First Name </h4>{{ detailemployee.fName }}
+                        <h4>Last Name </h4>{{ detailemployee.lName }}
+                        <h4>Email :</h4>{{ detailemployee.email }}
+                        <h4>Position </h4>{{ detailemployee.position }}  
+                        <h4>Gender : </h4> {{ detailemployee.gender }}  
+                        <h4>Phone :</h4>{{ detailemployee.phone }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+										
+                                        <div class="modal-header">
+											
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title" id="myModalLabel"></h4>
+                                        </div>
+                                        <div class="modal-body">
+											<div class="alert alert-success alert-dismissable" ng-show="confMsg == 1">
+                                					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                               Mail succefully sended.
+                            </div>
+                                           <form id="accountForm" name="contractForm" class="form-horizontal" role="form" ng-submit="mail(email)">
+											   <div class="form-group" ng-class="{ 'has-error': contractForm.to.$dirty && contractForm.to.$error.required }">
+                <label class="col-xs-3 control-label">Send to</label>
+                <div class="col-xs-5">
+                    <input type="email" class="form-control" name="to" ng-model="email.to" required/>
+					<span ng-show="contractForm.to.$dirty && contractForm.to.$error.required" class="help-block">Set the email field!</span>
+                </div>
+            </div>
+											   <div class="form-group" ng-class="{ 'has-error': contractForm.subject.$dirty && contractForm.subject.$error.required }">
+                <label class="col-xs-3 control-label">Subject</label>
+                <div class="col-xs-5">
+                    <input type="text" class="form-control" name="subject" ng-model="email.subject" required/>
+					<span ng-show="contractForm.subject.$dirty && contractForm.subject.$error.required" class="help-block">Set the email field!</span>
+                </div>
+            </div>
+											   
+											   <div class="form-group"  ng-class="{ 'has-error': contractForm.body.$dirty && contractForm.body.$error.required }">
+                <label class="col-xs-3 control-label">Object</label>
+                <div class="col-xs-5">
+					<textarea name="body" ng-model="email.body" class="form-control" required></textarea>
+						<span ng-show="contractForm.body.$dirty && contractForm.body.$error.required" class="help-block">Set the body!</span>
+                </div>
+            </div>
+<button type="submit" class="btn btn-primary" ng-disabled="contractForm.$invalid || sending">Send</button><img ng-if="sending" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />								
+											</form>
+											
+											
+                                        </div>
+				<div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                            </div>    
+    
+</div>
+
+ <script>
+    setTimeout(function() {
+         angular.element('#dataTables-employees').DataTable({
+                responsive: true
+        });
+    },100	);
+    </script>

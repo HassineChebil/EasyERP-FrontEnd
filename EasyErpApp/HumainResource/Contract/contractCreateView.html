@@ -1,0 +1,247 @@
+<div id="wrapper">
+
+        <!-- Navigation -->
+            
+        <header></header>
+        <!-- /.navbar-top-links -->
+        
+               
+        <!-- /.navbar-static-side -->
+
+            <div id="page-wrapper" style="min-height: 561px;">
+<div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Contract</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    
+    
+    <!-- /.panel -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-clock-o fa-fw"></i> Create a contract
+                </div>
+                <!-- /.panel-heading -->
+              <div class="panel-body">
+                           
+                          <style type="text/css">
+#accountForm {
+    margin-top: 15px;
+}
+</style>
+
+<ul class="nav nav-tabs">
+    <li ng-class="{'active' : tab == 1}"><a href="" data-toggle="tab" ng-click="tab=1">Contract info <i class="fa"></i></a></li>
+    <li ng-class="{'active' : tab == 2}"><a href=""  data-toggle="tab" ng-click="tab=2">Employee info <i class="fa"></i></a></li>
+	 <li ng-class="{'active' : tab == 3}"><a href=""  data-toggle="tab" ng-click="tab=3">Paysplit info <i class="fa"></i></a></li>
+</ul>
+<form id="accountForm" name="contractForm" class="form-horizontal" role="form" ng-submit="create(contract,employee,paySlipt,division)">
+    <div class="tab-content">
+        <div  ng-show="tab==1" id="info-tab">
+            <div class="form-group" ng-class="{ 'has-error': contractForm.signingDate.$dirty && contractForm.signingDate.$error.required }">
+                <label class="col-xs-3 control-label">Singing date</label>
+                <div class="col-xs-5">
+                    <input type="date" class="form-control" id="signingDate" name="signingDate" required ng-model="contract.signingDate" />
+					<span ng-show="contractForm.signingDate.$dirty && contractForm.signingDate.$error.required" class="help-block">Date required!</span>
+                </div>
+            </div>
+
+            <div class="form-group" ng-class="{ 'has-error': contractForm.type.$dirty && contractForm.type.$error.required }">
+                <label class="col-xs-3 control-label">Type</label>
+                <div class="col-xs-5">
+                    <select class="form-control" name="type" ng-model="contract.type" required>
+                        <option value="">Select a type</option>
+                        <option value="CDI">CDI</option>
+                        <option value="CDD">CDD</option>
+                        <option value="CVP">CVP</option>
+                    </select>
+					<span ng-show="contractForm.type.$dirty && contractForm.type.$error.required" class="help-block">Type required!</span>
+                </div>
+            </div>
+
+            <div class="form-group"  ng-class="{ 'has-error': contractForm.description.$dirty && contractForm.description.$error.required }">
+                <label class="col-xs-3 control-label">Description</label>
+                <div class="col-xs-5">
+					<textarea name="description" ng-model="contract.description" class="form-control" required></textarea>
+						<span ng-show="contractForm.description.$dirty && contractForm.description.$error.required" class="help-block">Description required!</span>
+                </div>
+            </div>
+        </div>
+
+        <div ng-show="tab==2"  id="address-tab">
+			
+            <div class="form-group" ng-class="{ 'has-error': contractForm.fName.$dirty && contractForm.fName.$error.required }">
+                <label class="col-xs-3 control-label">First name</label>
+                <div class="col-xs-5">
+                    <input type="text" class="form-control" name="fName" ng-model="employee.fName" required/>
+					<span ng-show="contractForm.fName.$dirty && contractForm.fName.$error.required" class="help-block">First name required!</span>
+                </div>
+            </div>
+
+            <div class="form-group" ng-class="{ 'has-error': contractForm.lName.$dirty && contractForm.lName.$error.required }">
+                <label class="col-xs-3 control-label">Last name</label>
+                <div class="col-xs-5">
+                    <input type="text" class="form-control" name="lName" ng-model="employee.lName" required/>
+					<span ng-show="contractForm.lName.$dirty && contractForm.lName.$error.required" class="help-block">Last name required!</span>
+                </div>
+            </div>
+
+            <div class="form-group" ng-class="{ 'has-error': contractForm.cin.$dirty && contractForm.cin.$error.required }">
+                <label class="col-xs-3 control-label">CIN</label>
+                <div class="col-xs-5">
+                    <input type="text" class="form-control" name="cin" ng-model="employee.cin" required/>
+					<span ng-show="contractForm.cin.$dirty && contractForm.cin.$error.required" class="help-block">CIN required!</span>
+                </div>
+            </div>
+			
+			<div class="form-group" ng-class="{ 'has-error': contractForm.Email.$dirty && contractForm.Email.$error.required && contractForm.Email.$error.email }">
+                <label class="col-xs-3 control-label">E-mail</label>
+                <div class="col-xs-5">
+                    <input type="email" class="form-control" name="Email" ng-model="employee.email" required/>
+					<span ng-show="contractForm.Email.$dirty && contractForm.Email.$error.required && contractForm.Email.$error.email" class="help-block">The e-mail is not set correctly</span>
+                </div>
+            </div>
+			
+			<div class="form-group" ng-class="{ 'has-error': contractForm.password.$dirty && contractForm.password.$error.required }">
+                <label class="col-xs-3 control-label">Password</label>
+                <div class="col-xs-5">
+                    <input type="password" class="form-control" name="password" ng-model="employee.password" required/>
+					<span ng-show="contractForm.password.$dirty && contractForm.password.$error.required" class="help-block">Password required</span>
+                </div>
+            </div>
+			
+			<div class="form-group" ng-class="{ 'has-error': contractForm.gender.$dirty && contractForm.gender.$error.required}">
+                <label class="col-xs-3 control-label">Gender</label>
+                <div class="col-xs-5">
+                     <select class="form-control" name="gender" ng-model="employee.gender" required>
+                        <option value="">Select a gender</option>
+                        <option value="M">Male</option>
+                        <option value="F">Female</option>
+                    </select>
+					<span ng-show="contractForm.gender.$dirty && contractForm.gender.$error.required" class="help-block">Gender required</span>
+                </div>
+            </div>
+			
+			
+			<div class="form-group" ng-class="{ 'has-error': contractForm.phone.$dirty && contractForm.phone.$error.required }">
+                <label class="col-xs-3 control-label">Phone</label>
+                <div class="col-xs-5">
+                    <input type="text" class="form-control" name="phone" ng-model="employee.phone" required/>
+					<span ng-show="contractForm.phone.$dirty && contractForm.phone.$error.required" class="help-block">Phone required</span>
+                </div>
+            </div>
+			
+			<div class="form-group" ng-class="{ 'has-error': contractForm.registrationNbr.$dirty && contractForm.registrationNbr.$error.required }">
+                <label class="col-xs-3 control-label">Registration number</label>
+                <div class="col-xs-5">
+                    <input type="text" class="form-control" name="registrationNbr" ng-model="employee.registrationNbr" required/>
+					<span ng-show="contractForm.registrationNbr.$dirty && contractForm.registrationNbr.$error.required" class="help-block">Registration number required</span>
+                </div>
+            </div>
+			
+			<div class="form-group" ng-class="{ 'has-error': contractForm.position.$dirty && contractForm.position.$error.required }">
+                <label class="col-xs-3 control-label">Position</label>
+                <div class="col-xs-5">
+                     <select class="form-control" name="position" ng-model="employee.position" required>
+                        <option value="">Select a type</option>
+                        <option value="manager">Manager</option>
+                        <option value="employee">Employee</option>
+                    </select>
+					<span ng-show="contractForm.position.$dirty && contractForm.position.$error.required " class="help-block">Position required</span>
+                </div>
+            </div>
+			
+			<div class="form-group" ng-class="{ 'has-error': contractForm.division.$dirty && contractForm.division.$error.required }">
+                <label class="col-xs-3 control-label">Division</label>
+                <div class="col-xs-5">
+                     <select class="form-control" name="division" ng-model="division" required>
+                        <option value="">Select division</option>
+                        <option value="hr">Humain resource</option>
+                        <option value="fa">Financial</option>
+						 <option value="inv">Inventory</option>
+                    </select>
+					<span ng-show="contractForm.division.$dirty && contractForm.division.$error.required " class="help-block">Position required</span>
+                </div>
+            </div>
+			
+        </div>
+		
+		<div  ng-show="tab==3" id="paysplit-tab">
+            <div class="form-group" ng-class="{ 'has-error': contractForm.grossWage.$dirty && contractForm.grossWage.$error.required }">
+                <label class="col-xs-3 control-label">Gross wage</label>
+                <div class="col-xs-5">
+                    <input type="number" class="form-control" id="grossWage" name="grossWage" required ng-model="paySlipt.grossWage" />
+					<span ng-show="contractForm.grossWage.$dirty && contractForm.grossWage.$error.required" class="help-block">Gross wage required!</span>
+                </div>
+            </div>
+
+            <div class="form-group" ng-class="{ 'has-error': contractForm.paidLeaveDays.$dirty && contractForm.paidLeaveDays.$error.required }">
+                <label class="col-xs-3 control-label">Paid leave days</label>
+                <div class="col-xs-5">
+                    <input type="number" class="form-control" id="paidLeaveDays" name="paidLeaveDays" required ng-model="paySlipt.paidLeaveDays" />
+					<span ng-show="contractForm.paidLeaveDays.$dirty && contractForm.paidLeaveDays.$error.required" class="help-block">Payed leave days required!</span>
+                </div>
+            </div>
+
+            <div class="form-group" ng-class="{ 'has-error': contractForm.unpaidLeaveDays.$dirty && contractForm.unpaidLeaveDays.$error.required }">
+                <label class="col-xs-3 control-label">Unpaid leave days</label>
+                <div class="col-xs-5">
+                    <input type="number" class="form-control" id="unpaidLeaveDays" name="unpaidLeaveDays" required ng-model="paySlipt.unpaidLeaveDays" />
+					<span ng-show="contractForm.unpaidLeaveDays.$dirty && contractForm.unpaidLeaveDays.$error.required" class="help-block">Unpayed leave days required!</span>
+                </div>
+            </div>
+			
+			<div class="form-group" ng-class="{ 'has-error': contractForm.paySplitMonth.$dirty && contractForm.paySplitMonth.$error.required }">
+                <label class="col-xs-3 control-label">Months</label>
+                <div class="col-xs-5">
+                     <select class="form-control" name="paySplitMonth" ng-model="paySlipt.paySplitMonth" required>
+                        <option value="">Select month</option>
+                        <option value="Janvier">Janvier</option>
+                        <option value="Fevrier">Fevrier</option>
+						 <option value="Mars">Mars</option>
+						 <option value="Avril">Avril</option>
+						 <option value="Mai">Mai</option>
+						 <option value="Juin">Juin</option>
+						 <option value="Juillet">Juillet</option>
+						 <option value="Aout">Aout</option>
+						 <option value="September">September</option>
+						 <option value="October">October</option>
+						 <option value="Nouvember">Nouvember</option>
+						 <option value="Decembre">Decembre</option>
+                    </select>
+					<span ng-show="contractForm.paySplitMonth.$dirty && contractForm.paySplitMonth.$error.required " class="help-block">Month required</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group" style="margin-top: 15px;">
+        <div class="col-xs-5 col-xs-offset-3">
+            <button ng-disabled="contractForm.$invalid" class="btn btn-primary" type="submit">Validate</button>
+        </div>
+    </div>
+</form>
+
+
+                         
+                        </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-8 -->
+        
+        <!-- /.col-lg-4 -->
+    </div>
+    <!-- /.row -->
+</div>
+ </div>
+            <!-- /#page-wrapper -->
+    </div>
+
+ 

@@ -1,0 +1,121 @@
+<div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+		<!-- Humain Resource side-menu -->
+		
+        <ul class="nav" id="side-menu" ng-show="Role == 'hrEmployee'">
+            <li ng-class="{'active': activetab == 'hrDash'}">
+                <a href="#/hrDash"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+            </li>
+            
+			
+			           <li ng-class="{'active': collapseVar==1}">
+                <a href="" ng-click="check(1)"><i class="fa fa-wrench fa-fw"></i> Contract<span
+                        class="fa arrow"></span></a>
+                <ul ng-class="{'nav nav-second-level collapse in' : collapseVar==1,'nav nav-second-level collapse': collapseVar!=1}">
+                    <li ng-class="{'active' : activetab == 'contract'}">
+                        <a href="#/contract">List all</a>
+                    </li>
+                    <li ng-class="{'active' : activetab == 'contractCreate'}">
+                        <a href="#/contract/create">New contract</a>
+                    </li>
+					
+                </ul>
+                <!-- /.nav-second-level -->
+            </li>
+			
+			
+			 <li ng-class="{'active': collapseVar==2}">
+                <a href="" ng-click="check(2)"><i class="fa fa-clipboard fa-fw"></i> Candidate<span
+                        class="fa arrow"></span></a>
+                <ul ng-class="{'nav nav-second-level collapse in' : collapseVar==2,'nav nav-second-level collapse': collapseVar!=2}">
+                    <li ng-class="{'active' : activetab == 'candidate'}">
+                        <a href="#/candidate">List all</a>
+                        <a href="#/candidate/create">Create</a>
+                    </li>
+                    
+                </ul>
+                <!-- /.nav-second-level -->
+            </li>
+
+            <li class="{'active': collapseVar==3}">
+                <a href="#/employee"><i class="fa fa-users fa-fw"></i> Employee</a>
+            </li>
+            
+            <li class="{'active': collapseVar==4}">
+                <a href="#/training"><i class="fa fa-book fa-fw"></i> Training</a>
+            </li>
+			<li class="{'active': collapseVar==4}">
+                <a href="#/chat"><i class="fa fa-comment fa-fw"></i> Chat</a>
+            </li>
+			
+        </ul>
+		
+		
+		<!-- Financial side-menu -->
+		
+		<ul class="nav in" id="side-menu" ng-show="Role == 'fanEmployee'">
+            <li ng-class="{'active': activetab == 'fanDash'}">
+                <a href="#/fanDash"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+            </li>
+            <li ng-class="{'active': collapseVar==1}">
+                <a href="#/fanmaintenance"><i class="fa  fa-wrench fa-fw"></i> Maintenance<span></span></a>
+            </li>
+            <li class="">
+                <a href="#/fansale"><i class="fa fa-shopping-cart fa-fw"></i> Sale</a>
+            </li>
+            <li class="">
+                <a href="#/fanpurchase"><i class="fa fa-money fa-fw"></i> Purchase</a>
+            </li>
+			<li class="">
+                <a href="#/fangeneralledger"><i class="fa fa-edit fa-fw"></i> General Ledger</a>
+            </li>
+            <li class="{'active': collapseVar==4}">
+                <a href="#/training"><i class="fa fa-book fa-fw"></i> Training</a>
+            </li>
+			<li class="{'active': collapseVar==4}">
+                <a href="#/chat"><i class="fa fa-comment fa-fw"></i> Chat</a>
+            </li>
+        </ul>
+		
+		<!-- Inventory side-menu -->
+		
+		
+		<ul class="nav in" id="side-menu" ng-show="Role == 'inventEmployee'">
+            <li ng-class="{'active': activetab == 'hrDash'}">
+                <a href="#/hrDash"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+            </li>
+			<li ng-class="{'active': collapseVar==1}">
+                <a href="" ng-click="check(1)"><i class="fa fa-map-marker fa-fw"></i> Depot <span
+                        class="fa arrow"></span></a>
+                <ul ng-class="{'nav nav-second-level collapse in' : collapseVar==1,'nav nav-second-level collapse': collapseVar!=1}">
+                    <li ng-class="{'active' : activetab == 'depot'}">
+                        <a href="#/depot">List all</a>
+                    </li>
+                    
+                    </li>
+                </ul>
+                 <li ng-class="{'active': collapseVar==1}">
+                <a href="" ng-click="check(1)"><i class="fa fa-list fa-fw"></i> Material <span
+                        class="fa arrow"></span></a>
+                <ul ng-class="{'nav nav-second-level collapse in' : collapseVar==1,'nav nav-second-level collapse': collapseVar!=1}">
+                    <li ng-class="{'active' : activetab == 'material'}">
+                        <a href="#/material">List all</a>
+                    </li>
+                     <li ng-class="{'active' : activetab == 'materialCreate'}">
+                        <a href="#/material/create">New material</a></li>
+                     </li>
+                </ul>
+            <li class="{'active': collapseVar==4}">
+                <a href="#/training"><i class="fa fa-graduation-cap fa-fw"></i> Training</a>
+            </li>
+			<li class="{'active': collapseVar==4}">
+                <a href="#/chat"><i class="fa fa-book fa-fw"></i> Chat</a>
+            </li>
+			
+        </ul>
+    </div>
+    <!-- /.sidebar-collapse -->
+</div> 
+
+
+

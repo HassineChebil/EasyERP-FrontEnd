@@ -1,0 +1,124 @@
+<div id="wrapper">
+
+        <!-- Navigation -->
+            
+        <header></header>
+        <!-- /.navbar-top-links -->
+        
+               
+        <!-- /.navbar-static-side -->
+
+    <div id="page-wrapper" style="min-height: 561px;">
+            <div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Candidate</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+
+
+                <!-- /.panel -->
+                <div class="row">
+                    <div class="col-lg-12">
+
+
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <i class="fa fa-clock-o fa-fw"></i>Create a candidate
+                                </div>
+                                <!-- /.panel-heading -->
+                                <div class="panel-body">           
+                                    <style type="text/css">
+                                        #candidateStyle {
+                                            margin-top: 15px;
+                                        }
+                                    </style>
+                                    <form id="candidateStyle" name="candidateForm" class="form-horizontal" role="form" ng-submit="create(candidate)">
+                                        <div class="tab-content">			
+                                                <div class="form-group" ng-class="{ 'has-error': candidateForm.fname.$dirty && candidateForm.fname.$error.required }">
+                                                    <label class="col-xs-3 control-label">First name</label>
+                                                    <div class="col-xs-5">
+                                                        <input type="text" class="form-control" name="fname" ng-model="candidate.fname" required/>
+                                                        <span ng-show="candidateForm.fname.$dirty && candidateForm.fname.$error.required" class="help-block">First name required!</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group" ng-class="{ 'has-error': candidateForm.lname.$dirty && candidateForm.lname.$error.required }">
+                                                    <label class="col-xs-3 control-label">Last name</label>
+                                                    <div class="col-xs-5">
+                                                        <input type="text" class="form-control" name="lname" ng-model="candidate.lname" required/>
+                                                        <span ng-show="candidateForm.lname.$dirty && candidateForm.lname.$error.required" class="help-block">Last name required!</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group" ng-class="{ 'has-error': candidateForm.cin.$dirty && candidateForm.cin.$error.required }">
+                                                    <label class="col-xs-3 control-label">CIN</label>
+                                                    <div class="col-xs-5">
+                                                        <input type="text" class="form-control" name="cin" ng-model="candidate.cin" required/>
+                                                        <span ng-show="candidateForm.cin.$dirty && candidateForm.cin.$error.required" class="help-block">CIN required!</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group" ng-class="{ 'has-error': candidateForm.email.$dirty && candidateForm.email.$error.required && candidateForm.email.$error.email }">
+                                                    <label class="col-xs-3 control-label">E-mail</label>
+                                                    <div class="col-xs-5">
+                                                        <input type="email" class="form-control" name="email" ng-model="candidate.email" required/>
+                                                        <span ng-show="candidateForm.email.$dirty && candidateForm.email.$error.required && candidateForm.email.$error.email" class="help-block">The e-mail is not set correctly</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group" ng-class="{ 'has-error': candidateForm.gender.$dirty && candidateForm.email.$error.required}">
+                                                    <label class="col-xs-3 control-label">Gender</label>
+                                                    <div class="col-xs-5">
+                                                         <select class="form-control" name="gender" ng-model="candidate.gender" required>
+                                                            <option value="">Select a type</option>
+                                                            <option value="M">Male</option>
+                                                            <option value="F">Female</option>
+                                                        </select>
+                                                        <span ng-show="candidateForm.gender.$dirty && candidateForm.gender.$error.required" class="help-block">gender required</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group" ng-class="{ 'has-error': candidateForm.phone.$dirty && candidateForm.phone.$error.required }">
+                                                    <label class="col-xs-3 control-label">Phone</label>
+                                                    <div class="col-xs-5">
+                                                        <input type="text" class="form-control" name="phone" ng-model="candidate.phone" required/>
+                                                        <span ng-show="candidateForm.phone.$dirty && candidateForm.phone.$error.required" class="help-block">Phone required</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group" ng-class="{ 'has-error': candidateForm.interviewDate.$dirty && candidateForm.interviewDate.$error.required }">
+                                                    <label class="col-xs-3 control-label">Interview date</label>
+                                                    <div class="col-xs-5">
+                                                        <input type="date" class="form-control" id="interviewDate" name="interviewDate" required ng-model="candidate.interviewDate" />
+                                                        <span ng-show="candidateForm.interviewDate.$dirty && candidateForm.interviewDate.$error.required" class="help-block">Date required!</span>
+                                                    </div>
+                                                </div>    	
+                                        </div>
+
+                                        <div class="form-group" style="margin-top: 15px;">
+                                            <div class="col-xs-5 col-xs-offset-3">
+                                                <button ng-disabled="candidateForm.$invalid" class="btn btn-primary" type="submit">Validate</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- /.panel-body -->
+                            </div>            
+
+
+
+
+                        <!-- /.panel -->
+                    </div>
+                    <!-- /.col-lg-8 -->
+
+                    <!-- /.col-lg-4 -->
+                </div>
+                <!-- /.row -->
+            </div>
+    </div>
+            <!-- /#page-wrapper -->
+</div>

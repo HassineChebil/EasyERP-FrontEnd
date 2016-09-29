@@ -1,0 +1,90 @@
+<div id="wrapper">
+    <!-- Navigation -->        
+    <header></header>
+    <!-- /.navbar-top-links -->
+    <!-- /.navbar-static-side -->
+    <div id="page-wrapper" style="min-height: 561px;">
+        <div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">candidate</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <!-- /.panel -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-clock-o fa-fw"></i> List of candidates
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="dataTable_wrapper">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-candidates">
+                                    <thead>
+                                        <tr>
+                                            <th>Cin</th>
+                                            <th>Email</th>
+                                            <th>Interview Date</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="odd gradeX" ng-repeat="c in candidates | filter:searchText.fname">
+                                            <td>{{ c.cin }}</td>
+                                            <td>{{ c.email }}</td>
+                                            <td>{{ c.interviewDate | date:'medium' }}</td>
+                                            <td>
+                                                <button ng-show="c != null" class="btn btn-info" data-toggle="modal" data-target="#myModal" ng-click="detail(c)">Detail</button>
+                                                <button ng-show="c.status == false" class="btn btn-success" ng-click="Accept(c)">Accept</button>
+                                                <button ng-show="c.status == false" class="btn btn-danger" ng-click="Deny(c)">Deny</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-8 -->
+
+                <!-- /.col-lg-4 -->
+            </div>
+            <!-- /.row -->
+        </div>
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Detail : {{ detailcandidate.fname }} {{ detailcandidate.lname }}</h4>
+                </div>
+                <div class="modal-body">
+                   <div id="content">	                        
+                        <h4>Cin :</h4>{{ detailcandidate.cin }}
+                        <h4>First Name </h4>{{ detailcandidate.fname }}
+                        <h4>Last Name </h4>{{ detailcandidate.lname }}
+                        <h4>Email :</h4>{{ detailcandidate.email }}
+                        <h4>Gender : </h4> {{ detailcandidate.gender }}  
+                        <h4>Phone :</h4>{{ detailcandidate.phone }}
+                        <h4>Interview Date :</h4>{{ detailcandidate.interviewDate | date:'medium' }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    setTimeout(function() {
+         angular.element('#dataTables-candidates').DataTable({
+                responsive: true
+        });
+    },100	);
+</script>

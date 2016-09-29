@@ -1,0 +1,114 @@
+<div id="wrapper">
+
+        <!-- Navigation -->
+            
+        <header></header>
+        <!-- /.navbar-top-links -->
+        
+               
+        <!-- /.navbar-static-side -->
+
+            <div id="page-wrapper" style="min-height: 561px;">
+<div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header"> Financial Dashboard</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+       <div class="col-md-1"></div>
+     
+    
+        <stats number="{{maintenancesstat}}" comments="Maintenances" colour="primary" type="wrench"></stats>
+        <stats number="{{purchasesstat}}" comments="Sales" colour="yellow" type="shopping-cart"></stats>
+        <stats number="{{salesstat}}" comments="Purchases" colour="red" type="money"></stats>
+ 
+    </div>
+    
+    <!-- /.panel -->
+    <div class="row">
+        <div class="col-lg-8" id="bar-chart">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bar-chart-o fa-fw"></i> Statistics
+                </div>
+                       <div class="panel-body">
+                <canvas id="bar" class="chart chart-bar" style="width: 600px; height: 300px;"  data="datasets" labels="data.labels" series="bar.series"
+                options="bar.options"></canvas>
+                       <script>
+                var data = {
+    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    datasets: [
+        {
+            label: "My First dataset",
+            fillColor: "rgba(220,220,220,0.5)",
+            strokeColor: "rgba(220,220,220,0.8)",
+            highlightFill: "rgba(220,220,220,0.75)",
+            highlightStroke: "rgba(220,220,220,1)",
+            data: [0, 2, 0, 0, 0, 1, 0]
+        },
+        {
+            label: "My Second dataset",
+            fillColor: "rgba(151,187,205,0.5)",
+            strokeColor: "rgba(151,187,205,0.8)",
+            highlightFill: "rgba(151,187,205,0.75)",
+            highlightStroke: "rgba(151,187,205,1)",
+            data: [1, 1, 0, 0, 1, 0, 0]
+        }
+    ]
+};
+                            var ctx = document.getElementById("bar").getContext("2d");
+                           new Chart(ctx).Bar(data);
+                </script>
+            </div>
+               
+             
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-8 -->
+        <div class="col-lg-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-dollar fa-fw"></i> Convertisseur monetaire
+                </div>
+                <!-- /.panel-heading -->
+				<br>
+               	  <center>
+                        <iframe id="tmccc" src="http://themoneyconverter.com/FR/CurrencyConverter.aspx?tab=0&amp;from=EUR&amp;to=USD&amp;bg=000000&amp;logo=http://s24.postimg.org/m00e3bt2t/logo.png" style="width:251px; height:348px; border: none;" scrolling="no" marginwidth="0" marginheight="0"></iframe>
+                    </center>
+					<br>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+
+            <chat></chat>
+             <!-- /.panel .chat-panel -->
+        </div>
+        <!-- /.col-lg-4 -->
+    </div>
+    <!-- /.row -->
+</div>
+ </div>
+            <!-- /#page-wrapper -->
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+   
+    
+     

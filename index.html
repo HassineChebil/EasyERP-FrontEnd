@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html  ng-app="app">
+<head>
+<meta charset="utf-8">
+<title>Easy-ERP</title>
+	 <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="dist/css/main.css">
+    <link rel="stylesheet" href="dist/css/sb-admin-2.css">
+    <link rel="stylesheet" href="dist/css/timeline.css">
+    <link rel="stylesheet" href="bower_components/metisMenu/dist/metisMenu.min.css">
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.min.css">
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css" type="text/css">
+	<link rel="stylesheet" href="bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css">
+	<link rel="stylesheet" href="bower_components/datatables-responsive/css/responsive.dataTables.scss">
+	
+	
+    
+	
+    <script src="https://cdn.pubnub.com/pubnub.min.js"></script>
+  	<script src="https://cdn.pubnub.com/pubnub-crypto.min.js"></script>
+	<script src="bower_components/pdf/jquery.min.js"></script>
+    <script src="lib/jquery-2.0.3/jquery.min.js"></script>
+    <script src="bower_components/pdf/jspdf.min.js"></script>
+	<script src="bower_components/Chart.js/Chart.min.js"></script>
+    <script src="bower_components/pdf/html2canvas.min.js"></script>
+	<script src="bower_components/metisMenu/dist/metisMenu.min.js"></script>
+    <script src="lib/angular-1.2.20/angular.js"></script>
+	<script src="http://pubnub.github.io/angular-js/scripts/pubnub-angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/angular-loading-bar/build/loading-bar.min.js"></script>
+    <script src="lib/angular-1.2.20/angular-route.js"></script>
+	<script src="lib/ui-resource/angular-resource.min.js"></script>
+    <script src="lib/angular-1.2.20/angular-cookies.js"></script>
+	<script src="bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+	<script src="bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+	<script src='http://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js'></script>
+	    <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAd1xMYT1bt99qtFWQEzXiRBvORDWHgPtk&libraries=places'></script>
+	<script src="js/jquery.validate.min.js"></script>
+	 <script src="app.js"></script>
+
+	<script src="dataServices/userService.js"></script>
+	<script src="dataServices/HrServices/contractDataService.js"></script>
+	<script src="dataServices/HrServices/employeeDataService.js"></script>
+	<script src="dataServices/HrServices/paysplitDataService.js"></script>
+	<script src="dataServices/HrServices/mailDataService.js"></script>
+	<script src="dataServices/HrServices/candidateDataService.js"></script>
+    <script src="dataServices/HrServices/trainingDataService.js"></script>
+	<script src="dataServices/FinancilaServices/MaintenaceDataService.js"></script>
+	<script src="dataServices/FinancilaServices/PurchaseDataService.js"></script>
+	<script src="dataServices/FinancilaServices/SaleDataService.js"></script>
+	<script src="dataServices/FinancilaServices/GeneralledgerDataService.js"></script>
+	<script src="dataServices/InventServices/depotDataService.js"></script>
+	<script src="login/loginService.js"></script>
+	<script src="EasyErpApp/InventoryResource/Depot/depotService.js"></script>
+	 <script src="dataServices/InventServices/materialDataService.js"></script>
+	 <script src="EasyErpApp/InventoryResource/Material/materialService.js"></script>
+	 <script src="EasyErpApp/InventoryResource/Depot/mapService.js"></script>
+	<script src="login/loginService.js"></script>
+	<script src="EasyErpApp/HumainResource/Contract/contractService.js"></script>
+	<script src="EasyErpApp/HumainResource/Candidate/candidateService.js"></script>
+    <script src="EasyErpApp/HumainResource/Employee/employeeService.js"></script>
+    <script src="EasyErpApp/HumainResource/Training/trainingService.js"></script>
+	<script src="EasyErpApp/FinancialResource/Maintenance/MaintenanceService.js"></script>
+    <script src="EasyErpApp/FinancialResource/Purchase/PurchaseService.js"></script>
+    <script src="EasyErpApp/FinancialResource/Sale/SaleService.js"></script>
+    <script src="EasyErpApp/FinancialResource/GeneralLedger/GeneralLedgerService.js"></script>
+	
+	
+	<!-- controller scripts -->
+	
+	<script src="login/loginController.js"></script>
+	<script src="Dashboards/HrController.js"></script>
+	<script src="Dashboards/FanController.js"></script>
+	<script src="Dashboards/InventController.js"></script>
+    <script src="EasyErpApp/HumainResource/Candidate/candidateController.js"></script>
+    <script src="EasyErpApp/HumainResource/Employee/employeeController.js"></script>
+    <script src="EasyErpApp/HumainResource/Training/trainingController.js"></script>
+	<script src="EasyErpApp/HumainResource/Contract/contractController.js"></script>
+	<script src="EasyErpApp/InventoryResource/Depot/depotController.js"></script>
+	
+	<script src="EasyErpApp/InventoryResource/Material/materialController.js"></script>
+	<script src="EasyErpApp/chat/chatController.js"></script>
+	<script src="EasyErpApp/FinancialResource/Maintenance/MaintenanceController.js"></script>
+    <script src="EasyErpApp/FinancialResource/Purchase/PurchaseController.js"></script>
+    <script src="EasyErpApp/FinancialResource/Sale/SaleController.js"></script>
+    <script src="EasyErpApp/FinancialResource/GeneralLedger/GeneralLedgerController.js"></script>
+  
+	<script src="directives/header/header.js"></script>
+	<script src="directives/header/header-notification/header-notification.js"></script>
+	<script src="directives/sidebar/sidebar.js"></script>
+	<script src="directives/sidebar/sidebar-search/sidebar-search.js"></script>
+	<script src="directives/dashboard/stats/stats.js"></script>
+	
+	
+    <!-- endbower -->
+    <!-- endbuild -->
+    
+
+</head>
+<body>
+<div>
+
+        <div ng-view></div>
+
+    </div>
+</body>
+</html>

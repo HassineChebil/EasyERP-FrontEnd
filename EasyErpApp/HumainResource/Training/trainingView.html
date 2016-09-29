@@ -1,0 +1,184 @@
+<div id="wrapper">
+
+        <!-- Navigation -->
+            
+        <header></header>
+        <!-- /.navbar-top-links -->
+        
+               
+        <!-- /.navbar-static-side -->
+
+    <div id="page-wrapper" style="min-height: 561px;">
+        <div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">training</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+    <!-- /.panel -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default" ng-show="active">
+                        <div class="panel-heading">
+                            <i class="fa fa-clock-o fa-fw"></i> List of trainings
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="dataTable_wrapper">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-trainings">
+                                    <thead>
+                                        <tr>
+                                            <th>Title</th>
+                                            <th>type</th>
+                                            <th>Start Date</th>
+                                            <th>End Date</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="odd gradeX" ng-repeat="training in trainings | filter:searchText.title">
+                                            <td>{{ training.title }}</td>
+                                            <td>{{ training.startDate | date:'medium' }}</td>
+                                            <td>{{ training.endDate | date:'medium' }}</td>
+                                            <td>{{ training.local }}</td>
+                                            <td>
+                                                <button ng-show="training != null" class="btn btn-info" data-toggle="modal" data-target="#myModal" ng-click="detail(training)">Detail</button>
+                                                <button class="btn btn-primary" data-toggle="modal" data-target="#myModalAdd" ng-click="showAdd(training)">Manage employee</button>                                        
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive --> 
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-clock-o fa-fw"></i> List of My training
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="dataTable_wrapper">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-Mytrainings">
+                                    <thead>
+                                        <tr>
+                                            <th>Title</th>
+                                            <th>type</th>
+                                            <th>Start Date</th>
+                                            <th>End Date</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="odd gradeX" ng-repeat="training in Mytrainings | filter:searchText.title">
+                                            <td>{{ training.title }}</td>
+                                            <td>{{ training.startDate | date:'medium' }}</td>
+                                            <td>{{ training.endDate | date:'medium' }}</td>
+                                            <td>{{ training.local }}</td>
+                                            <td>
+                                                <button ng-show="training != null" class="btn btn-info" data-toggle="modal" data-target="#myModal" ng-click="detail(training)">Detail</button>                                        
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <!-- /.table-responsive --> 
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+
+                    <!-- /.panel -->
+                </div>
+        <!-- /.col-lg-8 -->
+        
+        <!-- /.col-lg-4 -->
+            </div>
+    <!-- /.row -->
+        </div>
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Detail : {{ detailtraining.title }}</h4>
+                </div>
+                <div class="modal-body">
+                   <div id="content">	 
+                        <h4>Title : </h4>{{ detailtraining.title }}                       
+                        <h4>Type :</h4>{{ detailtraining.type }}
+                        <h4>Description </h4>{{ detailtraining.description }}
+                        <h4>Start Date </h4>{{ detailtraining.startDate | date:'medium' }}
+                        <h4>End Date :</h4>{{ detailtraining.endDate | date:'medium' }}
+                        <h4>Local : </h4>{{ detailtraining.local }}  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="myModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Add employee to : {{ detailtraining.title }}</h4>
+                </div>
+                <div class="modal-body">
+                   <div id="content">
+                        <div class="dataTable_wrapper">			
+                            <table class="table table-striped table-bordered table-hover" id="dataTables-emptrainings">
+                                <thead>
+                                    <tr>
+                                        <th>Cin</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Position</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="odd gradeX" ng-repeat="employee in employees | filter:searchText.fName">
+                                        <td>{{ employee.cin }}</td>
+                                        <td>{{ employee.fName }}</td>
+                                        <td>{{ employee.lName }}</td>
+                                        <td>{{ employee.position }}</td>
+                                        <td>
+                                            <button class="btn btn-success" ng-show="verif(employee)==false" ng-click="AddEmp(employee)" data-dismiss="modal" aria-hidden="true">Add</button>
+                                            <button class="btn btn-danger" ng-show="verif(employee)==true" ng-click="DeleteEmp(employee)" data-dismiss="modal" aria-hidden="true">Delete</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>                               
+                        </div>                     
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    setTimeout(function() {
+         angular.element('#dataTables-trainings').DataTable({
+                responsive: true
+        });
+    },100	);
+    setTimeout(function() {
+         angular.element('#dataTables-Mytrainings').DataTable({
+                responsive: true
+        });
+    },100	);
+    setTimeout(function() {
+         angular.element('#dataTables-emptrainings').DataTable({
+                responsive: true
+        });
+    },100	);    
+</script>

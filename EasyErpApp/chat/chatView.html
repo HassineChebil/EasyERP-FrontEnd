@@ -1,0 +1,66 @@
+<div id="wrapper">
+
+        <!-- Navigation -->
+            
+        <header></header>
+        <!-- /.navbar-top-links -->
+        
+               
+        <!-- /.navbar-static-side -->
+
+            <div id="page-wrapper" style="min-height: 561px;">
+<div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Chat</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    
+    <!-- /.panel -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-clock-o fa-fw"></i> Start chat
+                </div>
+				
+	<div class="container" ng-app="app" ng-controller="ChatController">
+
+		<h4>Online Users</h4>
+		<ul>
+		  <li ng-repeat="user in users">{{user}}</li>
+		</ul>
+
+		<br />
+
+		<h4>Chat History ({{messages.length}})</h4>
+
+		<form ng-submit='publish()'>
+		  <input type="text" ng-model='newMessage' />
+		  <input type="submit" value="Send" />
+		</form>
+
+		<br />
+
+		<div class="well">
+		<ul>
+		<li ng-repeat="message in messages track by $index">{{message}}</li>
+		</ul>
+		</div>
+
+</div>
+                
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-8 -->
+       
+        <!-- /.col-lg-4 -->
+    </div>
+    <!-- /.row -->
+</div>
+ </div>
+            <!-- /#page-wrapper -->
+    </div>
